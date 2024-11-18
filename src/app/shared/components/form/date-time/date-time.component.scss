@@ -1,0 +1,122 @@
+.input-with-icon {
+  position: relative;
+
+  .calendar-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+  }
+
+  .calendar {
+    position: absolute;
+    width: 266px;
+    max-width: 100%;
+    top: 42px;
+    right: 0;
+
+    .date {
+      background-color: #161D31;
+      border-radius: 4px;
+      margin-bottom: 1px;
+
+      .header {
+        padding: 14px 9px 6px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        .navigation {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .month-year {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            span {
+              font-size: 14px;
+              font-weight: 500;
+              line-height: 23px;
+              color: #D0D2D6;
+            }
+          }
+        }
+
+        .weeks {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 4px;
+
+          span {
+            font-size: 12px;
+            line-height: 18px;
+            color: #B4B7BD;
+          }
+        }
+      }
+
+      .body {
+        padding: 7px;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+
+        .day {
+          width: 36px;
+          height: 36px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 14px;
+          line-height: 21px;
+          color: #B4B7BD;
+          border-radius: 50%;
+
+          &.gray {
+            color: #676D7D;
+          }
+
+          &:hover, &.current {
+            background-color: #283046;
+            border: 2px solid #7367F0;
+            cursor: pointer;
+          }
+
+          &.selected {
+            background-color: #7367F0;
+            color: #FFFFFF;
+          }
+        }
+      }
+    }
+
+    .time {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      background-color: #161D31;
+      border-radius: 5px;
+      filter: drop-shadow(0px 14px 28px rgba(0, 0, 0, 0.2));
+
+      input, span {
+        font-size: 14px;
+        line-height: 21px;
+        color: #6E6B7B;
+      }
+
+      input {
+        width: 50px;
+        border: 0;
+        padding: 0;
+        text-align: center;
+      }
+    }
+  }
+}

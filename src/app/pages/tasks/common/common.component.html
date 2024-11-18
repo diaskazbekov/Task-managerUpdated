@@ -1,0 +1,123 @@
+<div class="common">
+  <div class="title-wrapper">
+    <h3>{{ pageTitle }}</h3>
+  </div>
+  <div
+    class="dndList"
+    (dndDrop)="onDrop($event)"
+    dndDropzone
+    dndEffectAllowed="move"
+  >
+    <div
+      class="dndPlaceholder task-item"
+      dndPlaceholderRef
+    >
+    </div>
+    <ng-container *ngFor="let item of tasks;">
+      <div
+        [dndDraggable]="item"
+        dndEffectAllowed="move"
+        [dndDragImageOffsetFunction]="setDragImageOffset"
+        (dndMoved)="onDragged(item)"
+      >
+        <div class="horizontal-divider"></div>
+        <div class="task-item">
+          <div>
+            <app-checkbox
+              [checked]="item.completed"
+              *ngIf="!item.deleted"
+              (onCheck)="toggleCompleted(item)"
+            >
+            </app-checkbox>
+            <a
+              href=""
+              class="name"
+              [ngClass]="{ important: item.important && !important }"
+              (click)="clickItem($event, item)"
+            >
+              <span [innerHTML]="highlightText(item.name)"></span>
+            </a>
+          </div>
+          <div>
+            <div class="tags">
+              <ng-container *ngFor="let tag of item.tags">
+                <a
+                  href=""
+                  class="tag {{ tag.color }}"
+                  (click)="selectTag($event, tag)"
+                >
+                  <span>{{ tag.title }}</span>
+                </a>
+              </ng-container>
+            </div>
+            <span class="date">{{ item.date }}</span>
+            <app-icon
+              *ngIf="!item.deleted"
+              [icon]="iconName.TRASH"
+              [width]="18"
+              [wrapperWidth]="20"
+              [height]="20"
+              [pointer]="true"
+              (onClick)="toggleDeleted(item)"
+            >
+            </app-icon>
+            <app-icon
+              *ngIf="item.deleted"
+              [icon]="iconName.RESTORE"
+              [width]="20"
+              [height]="17"
+              [wrapperHeight]="20"
+              [pointer]="true"
+              (onClick)="toggleDeleted(item)"
+            >
+            </app-icon>
+            <app-icon
+              dndHandle
+              [icon]="iconName.VERTICAL_DOTS"
+              [width]="10"
+              [height]="16"
+              [wrapperWidth]="20"
+              [wrapperHeight]="20"
+              [repeat]="[0, 6]"
+              [pointer]="true"
+            >
+            </app-icon>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="horizontal-divider"></div>
+  <div class="more">
+    <a
+      *ngIf="total > limit"
+      href=""
+      (click)="loadMore($event)"
+    >
+      открыть еще 5 задач
+    </a>
+  </div>
+</div>
+
+<app-confirm
+  *ngIf="confirmModal"
+  [buttonText]="deleted ? 'Да, восстановить' : 'Да, удалить'"
+  (onClose)="confirmModal = false"
+  (onConfirm)="operate()"
+>
+</app-confirm>
+
+<app-modal
+  *ngIf="operateModal"
+  position="right"
+  modalTitle="Задача"
+  [closeClickOutside]="false"
+  (onClose)="closeModal()"
+>
+  <app-operate-task
+    [task]="operatedItem"
+    (saved)="saved()"
+    (deleted)="confirmModal = true"
+  >
+  </app-operate-task>
+</app-modal>

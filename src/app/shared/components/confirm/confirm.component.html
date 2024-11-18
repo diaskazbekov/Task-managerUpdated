@@ -1,0 +1,25 @@
+<app-modal (onClose)="onClose.emit()">
+  <app-icon
+    [icon]="iconName.WARNING"
+    [width]="74"
+    [height]="74"
+    fill="#FF9F43"
+  >
+  </app-icon>
+  <h4>{{ title }}</h4>
+  <p>{{ description }}</p>
+  <div class="actions">
+    <app-button
+      [text]="buttonText"
+      (onClick)="onConfirm.emit()"
+    >
+    </app-button>
+    <app-button
+      text="Отмена"
+      [danger]="true"
+      [outlined]="true"
+      (onClick)="onClose.emit()"
+    >
+    </app-button>
+  </div>
+</app-modal>

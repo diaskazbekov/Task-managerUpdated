@@ -1,0 +1,11 @@
+<div class="sidebar">
+  <div class="new-task">
+    <app-button
+      text="Новая задача"
+      (onClick)="tasksService.newTask.next(true)"
+    >
+    </app-button>
+  </div>
+  <app-menu/>
+  <app-tags/>
+</div>

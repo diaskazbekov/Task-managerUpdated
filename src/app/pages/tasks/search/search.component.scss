@@ -1,0 +1,16 @@
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 20px 18px 40px;
+
+  input {
+    line-height: 21px;
+    color: #B9B9C3;
+    padding: 0;
+
+    &::placeholder {
+      color: #B9B9C3;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+<form [formGroup]="form">
+  <app-input
+    [form]="form"
+    label="Название"
+    placeholder="Названия задачи"
+    controlName="name"
+  >
+  </app-input>
+  <app-checkbox
+    [checked]="form.controls['important'].value"
+    text="Важная задача"
+    (onCheck)="toggleImportant($event)"
+  >
+  </app-checkbox>
+  <app-date-time
+    [form]="form"
+    label="Дата и время окончания"
+    placeholder="Дата и время"
+    controlName="date"
+  >
+  </app-date-time>
+  <app-textarea
+    [form]="form"
+    label="Описание"
+    placeholder="Описание задачи"
+    controlName="description"
+  >
+  </app-textarea>
+  <div class="tags">
+    <h5>Тэги</h5>
+    <div class="items">
+      <ng-container *ngFor="let item of tags">
+        <app-checkbox
+          [checked]="selectedTags.includes(item.id)"
+          [text]="item.title"
+          (onCheck)="toggleTag(item.id, $event)"
+        >
+        </app-checkbox>
+      </ng-container>
+    </div>
+  </div>
+  <div class="actions">
+    <app-button
+      [text]="buttonText"
+      (onClick)="operate()"
+    >
+    </app-button>
+    <app-button
+      *ngIf="task"
+      [text]="task.deleted ? 'Восстановить' : 'Удалить'"
+      [outlined]="true"
+      (onClick)="deleted.emit()"
+    >
+    </app-button>
+  </div>
+</form>
+

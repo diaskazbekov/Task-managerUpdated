@@ -1,0 +1,45 @@
+button {
+  min-width: 146px;
+  max-height: 38px;
+  background-color: #7367F0;
+  color: #FFFFFF;
+  font-weight: 500;
+  line-height: 17px;
+  padding: 10px 23px 11px;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #8479F5;
+  }
+
+  &.outlined {
+    background-color: transparent;
+    color: #7367F0;
+    border: 1px solid #7367F0;
+
+    &:hover {
+      border-color: #8479F5;
+      color: #8479F5;
+    }
+  }
+
+  &.danger {
+    background-color: #EA5455;
+    letter-spacing: 0.4px;
+
+    &:hover {
+      background-color: #EC7070;
+    }
+
+    &.outlined {
+      background-color: transparent;
+      color: #EA5455;
+      border: 1px solid #EA5455;
+
+      &:hover {
+        border-color: #EC7070;
+        color: #EC7070;
+      }
+    }
+  }
+}

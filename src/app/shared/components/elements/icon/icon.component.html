@@ -1,0 +1,26 @@
+<div
+  class="svg-wrapper"
+  [ngStyle]="{ width: (wrapperWidth ?? width) + 'px', height: (wrapperHeight ?? height) + 'px' }"
+  [ngClass]="{pointer : pointer}"
+  (click)="onClick.emit()"
+>
+  <svg
+    [attr.width]="width"
+    [attr.height]="height"
+    [attr.viewBox]="'0 0 ' + width + ' ' + height"
+    xmlns="http://www.w3.org/2000/svg"
+    [class]="fill"
+    [ngClass]="{ active: active, search: icon === iconName.SEARCH, 'vertical-dots' : icon === iconName.VERTICAL_DOTS }"
+    [attr.fill]="fill"
+  >
+    <path
+      [id]="icon"
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      [attr.d]="d"
+    />
+    <ng-container *ngFor="let x of repeat">
+      <use [attr.href]="'#' + icon" [attr.x]="x" y="0"/>
+    </ng-container>
+  </svg>
+</div>

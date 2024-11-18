@@ -1,0 +1,7 @@
+<button
+  type="button"
+  [ngClass]="{ 'outlined' : outlined, danger: danger }"
+  (click)="onClick.emit()"
+>
+  {{ text }}
+</button>

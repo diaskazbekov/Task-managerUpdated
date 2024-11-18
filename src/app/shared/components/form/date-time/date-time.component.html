@@ -1,0 +1,108 @@
+<ng-container [formGroup]="form">
+  <div class="input-wrapper">
+    <div class="input">
+      <label>{{ label }}</label>
+      <div class="input-with-icon">
+        <input
+          class="value"
+          type="text"
+          [placeholder]="placeholder"
+          [formControlName]="controlName"
+          [ngClass]="{error : form.controls[controlName]['touched'] && form.controls[controlName].invalid}"
+          mask="d0.M0.0000 Hh:m0"
+          [dropSpecialCharacters]="false"
+          (blur)="onBlurDate()"
+        >
+        <div class="calendar-icon">
+          <app-icon
+            [icon]="iconName.CALENDER"
+            [width]="12"
+            [height]="14"
+            [wrapperWidth]="14"
+            [pointer]="true"
+            fill="#BABFC7"
+            (onClick)="open()"
+          >
+          </app-icon>
+        </div>
+        <div
+          *ngIf="opened"
+          class="calendar"
+          appClickOutside
+          (clickOutside)="opened = false"
+        >
+          <div class="date">
+            <div class="header">
+              <div class="navigation">
+                <app-icon
+                  [icon]="iconName.ARROW_LEFT"
+                  [width]="6"
+                  [height]="12"
+                  [wrapperWidth]="18"
+                  [wrapperHeight]="18"
+                  [pointer]="true"
+                  (onClick)="switchMonth(false)"
+                >
+                </app-icon>
+                <div class="month-year">
+                  <span>{{ months[current.month - 1] }}</span>
+                  <span>{{ current.year }}</span>
+                </div>
+                <app-icon
+                  [icon]="iconName.ARROW_RIGHT"
+                  [width]="6"
+                  [height]="12"
+                  [wrapperWidth]="18"
+                  [wrapperHeight]="18"
+                  [pointer]="true"
+                  (onClick)="switchMonth()"
+                >
+                </app-icon>
+              </div>
+              <div class="weeks">
+                <span>Пн</span>
+                <span>Вт</span>
+                <span>Ср</span>
+                <span>Чт</span>
+                <span>Пт</span>
+                <span>Сб</span>
+                <span>Вс</span>
+              </div>
+            </div>
+            <div class="body">
+              <ng-container *ngFor="let item of dates">
+                <div
+                  class="day"
+                  [ngClass]="{current: isCurrent(item), selected: isSelected(item), gray: isGray(item)}"
+                  (click)="selectDate(item)"
+                >
+                  {{ item.getDate() }}
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <div class="time">
+            <input
+              type="text"
+              mask="Hh"
+              [(ngModel)]="hour"
+              [ngModelOptions]="{ standalone: true }"
+              (ngModelChange)="onChangeTime()"
+              (blur)="onBlurTime()"
+            >
+            <span>:</span>
+            <input
+              type="text"
+              mask="m0"
+              [(ngModel)]="minute"
+              [ngModelOptions]="{ standalone: true }"
+              (ngModelChange)="onChangeTime()"
+              (blur)="onBlurTime()"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-validation-errors [control]="form.controls[controlName]"></app-validation-errors>
+  </div>
+</ng-container>

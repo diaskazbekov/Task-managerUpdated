@@ -1,0 +1,16 @@
+.sidebar {
+  /*width: 190px;*/
+  width: 210px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .new-task {
+    display: flex;
+    justify-content: center;
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}

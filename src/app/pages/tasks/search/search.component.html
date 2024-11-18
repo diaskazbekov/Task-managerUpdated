@@ -1,0 +1,9 @@
+<div class="search">
+  <app-icon [icon]="iconName.SEARCH" [wrapperWidth]="18" [wrapperHeight]="18"></app-icon>
+  <input
+    type="search"
+    placeholder="Поиск"
+    [(ngModel)]="value"
+    (keyup.enter)="search()"
+  >
+</div>

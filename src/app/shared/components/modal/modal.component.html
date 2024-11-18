@@ -1,0 +1,28 @@
+<div class="overlay"></div>
+<div
+  class="modal {{position}}"
+  appClickOutside
+  (clickOutside)="clickOutside()"
+>
+  <div class="header" *ngIf="modalTitle">
+    <div class="title">{{ modalTitle }}</div>
+    <div class="actions">
+      <ng-container *ngIf="actionsTemplate">
+        <ng-container *ngTemplateOutlet="actionsTemplate"></ng-container>
+      </ng-container>
+      <app-icon
+        [icon]="iconName.X"
+        [width]="12"
+        [height]="12"
+        [wrapperWidth]="20"
+        [wrapperHeight]="20"
+        [pointer]="true"
+        (onClick)="onClose.emit()"
+      >
+      </app-icon>
+    </div>
+  </div>
+  <div class="body">
+    <ng-content></ng-content>
+  </div>
+</div>

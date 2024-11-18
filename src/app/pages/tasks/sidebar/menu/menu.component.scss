@@ -1,0 +1,38 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+
+  .item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 20px;
+    padding: 9px 21px;
+
+    span {
+      color: #D0D2D6;
+    }
+
+    .line {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 3px;
+      border-radius: 1.5px;
+      background-color: #7367F0;
+    }
+
+    &:hover, &.active {
+      span {
+        color: #9B51E0;
+      }
+
+      .line {
+        display: block;
+      }
+    }
+  }
+}

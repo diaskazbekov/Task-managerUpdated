@@ -1,0 +1,124 @@
+.common {
+  display: flex;
+  flex-direction: column;
+
+  .title-wrapper {
+    padding: 18px 20px;
+
+    h3 {
+      font-size: 19px;
+      line-height: 21px;
+      color: #B9B9C3;
+    }
+  }
+
+  .task-item {
+    position: relative;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .name {
+        color: #B4B7BD;
+        line-height: 21px;
+
+        &.important {
+          font-weight: 600;
+          color: #F2C94C;
+        }
+      }
+
+      .tags {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .tag {
+          padding: 1px 9px;
+          border-radius: 17px;
+
+          span {
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 18px;
+          }
+
+          &.purple {
+            background-color: rgba(39, 114, 8, 0.12);
+
+            span {
+              color: #7367F0;
+            }
+          }
+
+          &.green {
+            background-color: rgba(40, 199, 111, 0.12);
+
+            span {
+              color: #28C76F;
+            }
+          }
+
+          &.orange {
+            background-color: rgba(255, 159, 67, 0.12);
+
+            span {
+              color: #FF9F43;
+            }
+          }
+
+          &.red {
+            background-color: rgba(234, 84, 85, 0.12);
+
+            span {
+              color: #EA5455;
+            }
+          }
+        }
+      }
+
+      .date {
+        font-size: 12px;
+        line-height: 18px;
+        color: #676D7D;
+        white-space: nowrap;
+      }
+    }
+
+    &:hover {
+      background-color: #242C43;
+    }
+  }
+
+  .more {
+    padding: 18px 20px;
+    display: flex;
+    justify-content: center;
+
+    a {
+      color: #B9B9C3;
+      font-size: 15px;
+      line-height: 21px;
+    }
+  }
+}
+
+.dndList {
+  transition: all 300ms ease;
+}
+
+.dndDraggingSource {
+  display: none !important;
+}
+
+.dndPlaceholder {
+  background: #161D31 !important;
+  height: 58px;
+}

@@ -1,0 +1,14 @@
+<div class="tags">
+  <h5>Тэги</h5>
+  <ng-container *ngFor="let item of tags">
+    <a
+      href=""
+      class="item {{item.color}}"
+      [ngClass]="{ active: tagIds.includes(item.id) }"
+      (click)="selectTag($event, item)"
+    >
+      <div class="dot"></div>
+      <span>{{ item.title }}</span>
+    </a>
+  </ng-container>
+</div>

@@ -1,0 +1,25 @@
+<div class="menu">
+  <ng-container *ngFor="let item of menu; let i = index">
+    <a
+      [routerLink]="item.link"
+      routerLinkActive="active"
+      #rla="routerLinkActive"
+      [routerLinkActiveOptions]="{ exact: i === 0 }"
+      class="item"
+      (mouseover)="item.hovered = true"
+      (mouseleave)="item.hovered = false"
+    >
+      <app-icon
+        [active]="item.hovered || rla.isActive"
+        [wrapperWidth]="20"
+        [wrapperHeight]="20"
+        [icon]="item.icon"
+        [width]="item.iconWidth"
+        [height]="item.iconHeight"
+      >
+      </app-icon>
+      <span>{{ item.title }}</span>
+      <div class="line"></div>
+    </a>
+  </ng-container>
+</div>

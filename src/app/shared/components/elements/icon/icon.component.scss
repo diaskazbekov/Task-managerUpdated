@@ -1,0 +1,39 @@
+:host {
+  font-size: 0;
+
+  .svg-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.pointer {
+      cursor: pointer;
+    }
+
+    svg {
+      &.none {
+        path {
+          fill: #BDBDBD;
+        }
+      }
+
+      &.search {
+        path {
+          fill: #B4B7BD;
+        }
+      }
+
+      &.vertical-dots {
+        path {
+          fill: #4F4F4F;
+        }
+      }
+
+      &.active {
+        path {
+          fill: #9B51E0;
+        }
+      }
+    }
+  }
+}

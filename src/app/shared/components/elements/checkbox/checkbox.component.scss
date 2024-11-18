@@ -1,0 +1,32 @@
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+
+  .checkbox {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    border: 1.5px solid #404656;
+
+    &:hover {
+      border-color: #9B51E0;
+    }
+
+    &.checked {
+      background-color: #7367F0;
+      border-color: #7367F0;
+    }
+  }
+
+  span {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 23px;
+    color: #D0D2D6;
+  }
+}
